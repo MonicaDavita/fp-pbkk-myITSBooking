@@ -14,6 +14,6 @@ class FacilitySeeder extends Seeder
      */
     public function run()
     {
-        //
+        // 
     }
 }

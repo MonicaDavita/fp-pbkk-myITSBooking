@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Faculty;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,19 @@ class FacultySeeder extends Seeder
      */
     public function run()
     {
-        //
+        $csvFile = fopen(base_path("database\\data\\faculties.csv"), "r");
+  
+        $firstline = true;
+        while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
+            if (!$firstline) {
+                Faculty::create([
+                    "id" => $data[0],
+                    "name" => $data[1]
+                ]);    
+            }
+            $firstline = false;
+        }
+   
+        fclose($csvFile);
     }
 }
