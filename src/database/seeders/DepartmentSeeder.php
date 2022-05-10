@@ -15,7 +15,7 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
-        $csvFile = fopen(base_path("database\\data\\departments.csv"), "r");
+        $csvFile = fopen(base_path("database/data/departments.csv"), "r");
   
         $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {

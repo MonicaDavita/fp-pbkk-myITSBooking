@@ -1,9 +1,13 @@
 version: "3.8"
 
+networks:
+  nginx-proxy-network:
+    external: true
+
 services:
   app:
-    container_name: pbkk-app-web
-    image: dptsi/laravel-web-dev
+    container_name: pbkk-app
+    image: mirzaq19/temanhewan-api
     volumes: 
       - ./src/:/var/www/html
     environment:
@@ -20,10 +24,12 @@ services:
       - nginx-proxy-network
 
   mysql:
-    image: mysql:8.0
     container_name: pbkk-mysql
+    image: mysql
+    restart: unless-stopped
+    tty: true
     ports:
-      - "3006:3306"
+      - "4306:3306"
     volumes:
       - ./data/mysql:/var/lib/mysql
     environment:
@@ -33,7 +39,3 @@ services:
       - MYSQL_PASSWORD=myitsbooking
     networks:
       - nginx-proxy-network
-
-networks:
-  nginx-proxy-network:
-    external: true

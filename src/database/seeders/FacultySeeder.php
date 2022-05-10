@@ -15,7 +15,7 @@ class FacultySeeder extends Seeder
      */
     public function run()
     {
-        $csvFile = fopen(base_path("database\\data\\faculties.csv"), "r");
+        $csvFile = fopen(base_path("database/data/faculties.csv"), "r");
   
         $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
