@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,6 @@ Auth::routes();
 
 Route::middleware('auth')->group(function() {
     Route::get('/', [DashboardController::class, 'index']);
+    Route::get('calendar', [CalendarController::class, 'index']);
+    Route::post('fullcalenderAjax', [CalendarController::class, 'ajax']);
 });
