@@ -65,12 +65,12 @@
     <article class="d-flex flex-column justify-content-center" style="min-height: calc(100vh - 10rem);">
       <div>
         <h1 class="fw-bold">Fasilitas-Fasilitas</h1>
-        <p class="fs-5 text-primary fw-normal">yang terbaik untuk anda</p>
+        <p class=" fs-5 text-primary fw-normal">yang terbaik untuk anda</p>
       </div>
       <div>
         <div class="container text-center my-3">
           <div class="row mx-auto my-auto justify-content-center">
-            <div id="recipeCarousel" class="carousel position-relative slide" data-bs-ride="carousel">
+            <div id="recipeCarousel" class="carousel px-0 position-relative slide" data-bs-ride="carousel">
               <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                   <div class="col-md-4 px-4">
@@ -219,21 +219,25 @@
                       </div>
                       <div class="card-body px-0 bg-transparent text-start">
                         <h3 class="fw-bold text-uppercase fs-3">Graha ITS</h3>
-                        <p class="fw-normal fs-5">Gedung yang memfasilitasi acara besar seperti wisuda, pernikahan, reuni,
+                        <p class="fw-normal fs-5">Gedung yang memfasilitasi acara besar seperti wisuda, pernikahan,
+                          reuni,
                           dan sebagainya.</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <a class="carousel-control-prev bg-primary w-aut carousel-control-prev-icon position-absolute top-50 left-0"
-                href="#recipeCarousel" role="button" data-bs-slide="prev">
-                {{-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> --}}
-              </a>
-              <a class="carousel-control-next bg-primary w-aut carousel-control-next-icon position-absolute top-50 right-0"
-                href="#recipeCarousel" role="button" data-bs-slide="next">
-                {{-- <span class="carousel-control-next-icon" aria-hidden="true"></span> --}}
-              </a>
+              <div class="m-0 d-flex justify-content-between position-absolute top-50 w-100 left-0 right-0"
+                style="transfrom: translate(50%);">
+                <button class="bg-transparent border-0" href="#recipeCarousel" role="button" type="button"
+                  data-bs-slide="prev" style="transform: translateX(-75%);">
+                  <img src="{{ asset('vendor/blade-fontawesome/solid/angle-left.svg') }}" width="75" height="75" />
+                </button>
+                <button class="bg-transparent border-0" href="#recipeCarousel" role="button" type="button"
+                  data-bs-slide="next" style="transform: translateX(75%);">
+                  <img src="{{ asset('vendor/blade-fontawesome/solid/angle-right.svg') }}" width="75" height="75" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
