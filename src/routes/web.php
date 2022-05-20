@@ -18,8 +18,17 @@ use App\Http\Controllers\CalendarController;
 
 Auth::routes();
 
+Route::get('/detail', function() {
+    return view('detail_fasilitas');
+});
+
 Route::middleware('auth')->group(function() {
     Route::get('/', [DashboardController::class, 'index']);
+
     Route::get('calendar', [CalendarController::class, 'index']);
     Route::post('fullcalenderAjax', [CalendarController::class, 'ajax']);
+
+    Route::get('/booking', function() {
+        return view('booking');
+    });
 });
