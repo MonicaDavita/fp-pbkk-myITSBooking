@@ -39,8 +39,12 @@ Route::middleware('auth')->group(function() {
 
     Route::get('calendar', [CalendarController::class, 'index']);
     Route::post('fullcalenderAjax', [CalendarController::class, 'ajax']);
+}
 
-    Route::get('/booking', function() {
-        return view('booking');
-    });
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/detail', function(){
+    return view('detail_fasilitas');
+});
+Route::get('/booking', function(){
+    return view('booking');
 });
