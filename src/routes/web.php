@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,16 @@ Auth::routes();
 Route::get('/detail', function() {
     return view('detail_fasilitas');
 });
+
+Route::prefix('admin')->name('admin.')->group(function() {
+    Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('showloginform');
+    Route::post('/login', [AdminLoginController::class, 'login'])->name('login');
+
+    Route::middleware('isadmin')->group(function() {
+        Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+    });
+});
+
 
 Route::middleware('auth')->group(function() {
     Route::get('/', [DashboardController::class, 'index']);
