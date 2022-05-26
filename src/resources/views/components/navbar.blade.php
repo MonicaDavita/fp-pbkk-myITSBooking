@@ -27,23 +27,19 @@
         </li>
 
         <!-- Authentication Links -->
-        @guest
-          @if (Route::has('login'))
-            <li class="px-4 border-2 fs-5 nav-item fw-bolder border-end">
-              <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-            </li>
-          @endif
-
-          @if (Route::has('register'))
-            <li class="px-4 border-2 fs-5 nav-item fw-bolder">
-              <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-            </li>
-          @endif
+        @if (!(auth()->guard('user')->check() || auth()->guard('admin')->check()))
+          <li class="px-4 border-2 fs-5 nav-item fw-bolder border-end">
+            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+          </li>
+        
+          <li class="px-4 border-2 fs-5 nav-item fw-bolder">
+            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+          </li>
         @else
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="px-4 fs-5 nav-link dropdown-toggle" href="#" role="button"
               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-              {{ Auth::user()->name }}
+              {{ auth()->guard('user')->check() ? auth()->guard('user')->user()->name : auth()->guard('admin')->user()->name }}
             </a>
 
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -61,7 +57,7 @@
               </form>
             </div>
           </li>
-        @endguest
+        @endif
       </ul>
     </div>
   </div>
