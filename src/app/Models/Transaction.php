@@ -22,4 +22,9 @@ class Transaction extends Model
         'document',
         'description',
     ];
+
+    public function facility()
+    {
+        return $this->belongsTo(Facility::class);
+    }
 }

@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->timestamp('book_date');
-            $table->float('price', 10, 2);
             $table->integer('duration');
             $table->integer('participants');
             $table->binary('document');
