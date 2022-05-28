@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function() {
 
     Route::get('calendar', [CalendarController::class, 'index']);
     Route::post('fullcalenderAjax', [CalendarController::class, 'ajax']);
-}
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/detail', function(){

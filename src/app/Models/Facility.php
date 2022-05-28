@@ -22,4 +22,9 @@ class Facility extends Model
         'close_time',
         'quota',
     ];
+    public $timestamps = false;
+    public function Category()
+    {
+        return $this->hasMany(Category::class);
+    }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
-            $table->enum('category', ['general', 'sport', 'department']);
+            $table->foreignId('category_id');
             $table->time('open_time');
             $table->time('close_time');
             $table->integer('quota');
