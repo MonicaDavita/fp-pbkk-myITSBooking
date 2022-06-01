@@ -30,6 +30,8 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
     Route::middleware('isadmin')->group(function() {
         Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+   
+        Route::get('/get-pemesanan/{id}', [AdminDashboardController::class, 'getPemesanan'])->name('getpemesanan');
     });
 });
 
