@@ -28,13 +28,18 @@
 
         <!-- Authentication Links -->
         @if (!(auth()->guard('user')->check() || auth()->guard('admin')->check()))
-          <li class="px-4 border-2 fs-5 nav-item fw-bolder border-end">
-            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-          </li>
-        
-          <li class="px-4 border-2 fs-5 nav-item fw-bolder">
-            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-          </li>
+          @if (!str_contains(url()->current(), "/admin/login"))
+            @if (!(Route::current()->getName() == 'login' || Route::current()->getName() == 'admin.showloginform'))
+            <li class="px-4 border-2 fs-5 nav-item fw-bolder">
+              <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+            </li>
+            @endif
+            @if (Route::current()->getName() != 'register')
+            <li class="px-4 border-2 fs-5 nav-item fw-bolder">
+              <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+            </li>
+            @endif
+          @endif
         @else
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="px-4 fs-5 nav-link dropdown-toggle" href="#" role="button"
@@ -48,7 +53,7 @@
               </a>
               <a class="dropdown-item" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
-                                                                                                                                                     document.getElementById('logout-form').submit();">
+                document.getElementById('logout-form').submit();">
                 {{ __('Keluar') }}
               </a>
 
