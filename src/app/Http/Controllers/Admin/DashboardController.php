@@ -17,4 +17,13 @@ class DashboardController extends Controller
         
         return view('admin.dashboard', compact('transactions'));
     }
+
+    public function getPemesanan(Request $request, int $id) 
+    {
+        $transaction = Transaction::where('id', $id)
+            ->with('facility', 'user')
+            ->first();
+
+        return json_encode($transaction);
+    }
 }
