@@ -32,6 +32,10 @@ Route::prefix('admin')->name('admin.')->group(function() {
         Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
    
         Route::get('/get-pemesanan/{id}', [AdminDashboardController::class, 'getPemesanan'])->name('getpemesanan');
+        Route::get('/reject-pemesanan/{id}', [AdminDashboardController::class, 'rejectPemesanan'])->name('rejectpemesanan');
+        Route::get('/accept-pemesanan/{id}', [AdminDashboardController::class, 'acceptPemesanan'])->name('acceptpemesanan');
+        Route::get('/cancel-pemesanan/{id}', [AdminDashboardController::class, 'cancelPemesanan'])->name('cancelpemesanan');
+        Route::get('/verify-pemesanan/{id}', [AdminDashboardController::class, 'verifyPemesanan'])->name('verifypemesanan');
     });
 });
 
