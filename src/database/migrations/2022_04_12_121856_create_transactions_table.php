@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('participants');
             $table->binary('document');
             $table->text('description');
+            $table->enum('status', ['rejected', 'pending', 'accepted'])->default('pending');
+            $table->boolean('is_verified')->default(false);
             $table->timestamps();
 
             $table->foreignId('admin_id')->constrained('admins');

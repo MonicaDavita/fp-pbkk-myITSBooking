@@ -26,4 +26,40 @@ class DashboardController extends Controller
 
         return json_encode($transaction);
     }
+
+    public function rejectPemesanan(Request $request, int $id)
+    {
+        $transaction = Transaction::find($id);
+
+        $transaction->status = 'rejected';
+
+        $transaction->save();
+    }
+
+    public function acceptPemesanan(Request $request, int $id)
+    {
+        $transaction = Transaction::find($id);
+
+        $transaction->status = 'accepted';
+
+        $transaction->save();
+    }
+
+    public function cancelPemesanan(Request $request, int $id)
+    {
+        $transaction = Transaction::find($id);
+
+        $transaction->status = 'pending';
+
+        $transaction->save();
+    }
+
+    public function verifyPemesanan(Request $request, int $id)
+    {
+        $transaction = Transaction::find($id);
+
+        $transaction->is_verified = true;
+
+        $transaction->save();
+    }
 }
