@@ -37,11 +37,11 @@
                     </div>
                     <div>
                         <div class="d-flex justify-content-around">
-                            <a href="fasilitas/{{ $facility->id }}/book" class="col-4 text-uppercase fw-bold btn btn-primary rounded">Booking</a>
-                            <a href="fasilitas/{{ $facility->id }}/calendar" class="col-4 text-uppercase fw-bold btn btn-warning rounded">Cek Kalender</a>
+                            <a href="/fasilitas/{{ $facility->id }}/booking" class="col-4 text-uppercase fw-bold btn btn-primary rounded">Booking</a>
+                            <a href="/fasilitas/{{ $facility->id }}/calendar" class="col-4 text-uppercase fw-bold btn btn-warning rounded">Cek Kalender</a>
                         </div>
                         <div class="d-flex justify-content-center my-5">
-                            <a href="{{ $facility->map_url }}" class="col-4 text-uppercase fw-bold btn btn-danger rounded" target="_blank">Cek Lokasi</a>
+                            <a href="/{{ $facility->map_url }}" class="col-4 text-uppercase fw-bold btn btn-danger rounded" target="_blank">Cek Lokasi</a>
                         </div>
                     </div>
                 </div>

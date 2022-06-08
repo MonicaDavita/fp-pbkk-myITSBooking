@@ -19,8 +19,12 @@ class Transaction extends Model
         'price',
         'duration',
         'participants',
-        'document',
+        'proposal',
+        'berkas',
         'description',
+        'admin_id',
+        'user_id',
+        'facility_id'
     ];
 
     public function facility()

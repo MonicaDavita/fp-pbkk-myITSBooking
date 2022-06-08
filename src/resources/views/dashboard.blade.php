@@ -71,6 +71,12 @@
         @endif
       </div>
       <div>
+        @if (session('booking-success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{ session('booking-success') }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="container my-3">
           <div class="row mx-auto my-auto justify-content-start">
             @if (count($facilities) == 0)
