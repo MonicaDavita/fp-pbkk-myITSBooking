@@ -30,7 +30,7 @@ class FacilitySeeder extends Seeder
                     "open_time" => $data[6],
                     "close_time" => $data[7],
                     "quota" => $data[8],
-                    "image_url" => $data[9],
+                    "map_url" => $data[9],
                     "department_id" => $data[10],
                     "admin_id" => $data[11],
                 ]);    

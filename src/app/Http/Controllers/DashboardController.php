@@ -13,9 +13,9 @@ class DashboardController extends Controller
         $facilities = null;
 
         if($category)
-            $facilities = Facility::where('category', $category)->get();
+            $facilities = Facility::where('category', $category)->with('images')->get();
         else
-            $facilities = Facility::all();
+            $facilities = Facility::with('images')->get();  
 
         return view('dashboard', [
             "facilities" => $facilities,
@@ -25,7 +25,7 @@ class DashboardController extends Controller
 
     public function getFacilityDetail(Request $request, int $id)
     {
-        $facility = Facility::findOrFail($id);
+        $facility = Facility::with('images')->where('id', $id)->first();
 
         return view('facility-detail', compact('facility'));
     }
