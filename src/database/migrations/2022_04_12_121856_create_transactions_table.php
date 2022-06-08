@@ -18,7 +18,8 @@ return new class extends Migration
             $table->timestamp('book_date');
             $table->integer('duration');
             $table->integer('participants');
-            $table->binary('document');
+            $table->string('proposal');
+            $table->string('berkas');
             $table->text('description');
             $table->enum('status', ['rejected', 'pending', 'accepted'])->default('pending');
             $table->boolean('is_verified')->default(false);

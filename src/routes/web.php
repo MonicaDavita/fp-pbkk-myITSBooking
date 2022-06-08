@@ -41,6 +41,9 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
 
 Route::middleware('auth')->group(function() {
+    Route::get('/fasilitas/{id}/booking', [DashboardController::class, 'booking'])->name('booking');
+    Route::post('/fasilitas/{id}/booking', [DashboardController::class, 'makeBooking'])->name('makebooking');
+
     Route::get('/{category?}', [DashboardController::class, 'index']);
 
     Route::get('calendar', [CalendarController::class, 'index']);
