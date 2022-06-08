@@ -18,19 +18,21 @@ class FacilitySeeder extends Seeder
         $csvFile = fopen(base_path("database/data/facilities.csv"), "r");
   
         $firstline = true;
-        while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
+        while (($data = fgetcsv($csvFile, 2000, "|")) !== FALSE) {
             if (!$firstline) {
                 Facility::create([
                     "id" => $data[0],
                     "name" => $data[1],
-                    "address" => $data[2],
-                    "price" => $data[3],
-                    "category" => $data[4],
-                    "open_time" => $data[5],
-                    "close_time" => $data[6],
-                    "quota" => $data[7],
-                    "department_id" => $data[8],
-                    "admin_id" => $data[9],
+                    "description" => $data[2],
+                    "address" => $data[3],
+                    "price" => $data[4],
+                    "category" => $data[5],
+                    "open_time" => $data[6],
+                    "close_time" => $data[7],
+                    "quota" => $data[8],
+                    "image_url" => $data[9],
+                    "department_id" => $data[10],
+                    "admin_id" => $data[11],
                 ]);    
             }
             $firstline = false;

@@ -41,7 +41,7 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
 
 Route::middleware('auth')->group(function() {
-    Route::get('/', [DashboardController::class, 'index']);
+    Route::get('/{category?}', [DashboardController::class, 'index']);
 
     Route::get('calendar', [CalendarController::class, 'index']);
     Route::post('fullcalenderAjax', [CalendarController::class, 'ajax']);

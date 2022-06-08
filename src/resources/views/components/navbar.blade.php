@@ -17,13 +17,13 @@
       <!-- Right Side Of Navbar -->
       <ul class="navbar-nav ms-auto">
         <li class="px-4 border-2 fs-5 nav-item border-end">
-          <a class="nav-link" href="#">Departemen</a>
+          <a class="nav-link" href="/department">Departemen</a>
         </li>
         <li class="px-4 border-2 fs-5 nav-item border-end">
-          <a class="nav-link" href="#">Olahraga</a>
+          <a class="nav-link" href="/sport">Olahraga</a>
         </li>
         <li class="px-4 border-2 fs-5 nav-item border-end">
-          <a class="nav-link" href="#">Rapat</a>
+          <a class="nav-link" href="/rapat">Rapat</a>
         </li>
 
         <!-- Authentication Links -->
