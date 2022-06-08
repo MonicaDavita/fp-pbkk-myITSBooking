@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             FacilitySeeder::class,
             TransactionSeeder::class,
+            ImageSeeder::class,
         ]);
     }
 }

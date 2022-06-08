@@ -71,7 +71,7 @@
         @endif
       </div>
       <div>
-        <div class="container text-center my-3">
+        <div class="container my-3">
           <div class="row mx-auto my-auto justify-content-start">
             @if (count($facilities) == 0)
               <div class="text-center">
@@ -82,8 +82,7 @@
               <div id="recipeCarousel" class="carousel px-0 position-relative slide" data-bs-ride="carousel">
                 <div class="carousel-inner" role="listbox">
                   @foreach ($facilities as $facil)    
-                    @if ($loop->iteration === 1)
-                      <a href="/fasilitas/{{ $facil->id }}">
+                    @if ($loop->first)
                         <div class="carousel-item active">
                           <div class="col-md-4 px-4">
                             <div class="card border-0">
@@ -91,18 +90,17 @@
                                 <p class="fs-1 text-secondary">{{ $loop->iteration }}</p>
                               </div>
                               <div class="card-img">
-                                <img src="{{ $facil->image_url }}" class="img-fluid">
+                                <img src="{{ $facil->images[0]->image_url }}" class="img-fluid">
                               </div>
-                              <div class="card-body px-0 bg-transparent text-start">
+                              <div class="card-body px-0 bg-transparent">
                                 <h3 class="fw-bold text-black text-uppercase fs-3">{{ $facil->name }}</h3>
                                 <p class="fw-normal fs-5 text-black">{{ $facil->description }}</p>
+                                <a href="/fasilitas/{{ $facil->id }}" class="btn btn-primary">Lihat detail</a>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </a>
                     @else
-                      <a href="/fasilitas/{{ $facil->id }}">
                         <div class="carousel-item">
                           <div class="col-md-4 px-4">
                             <div class="card border-0">
@@ -110,16 +108,16 @@
                                 <p class="fs-1 text-secondary">{{ $loop->iteration }}</p>
                               </div>
                               <div class="card-img">
-                                <img src="{{ $facil->image_url }}" class="img-fluid">
+                                <img src="{{ $facil->images[0]->image_url }}" class="img-fluid">
                               </div>
-                              <div class="card-body px-0 bg-transparent text-start">
+                              <div class="card-body px-0 bg-transparent">
                                 <h3 class="fw-bold text-black text-uppercase fs-3">{{ $facil->name }}</h3>
                                 <p class="fw-normal fs-5 text-black">{{ $facil->description }}</p>
+                                <a href="/fasilitas/{{ $facil->id }}" class="btn btn-primary">Lihat detail</a>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </a>
                     @endif
                   @endforeach
                 </div>

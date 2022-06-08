@@ -22,8 +22,8 @@ return new class extends Migration
             $table->enum('category', ['rapat', 'sport', 'department']);
             $table->time('open_time');
             $table->time('close_time');
+            $table->string('map_url');
             $table->integer('quota');
-            $table->string("image_url");
             $table->timestamps();
 
             $table->foreignId('department_id')->constrained('departments')->nullable();

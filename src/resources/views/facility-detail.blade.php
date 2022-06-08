@@ -8,15 +8,17 @@
                     {{-- <img class="img-fluid h-100" src="https://picsum.photos/600/360" alt=""> --}}
                     <div id="carouselControls" class="carousel slide h-100 w-100" data-bs-ride="carousel">
                         <div class="carousel-inner h-100 w-100">
-                            <div class="carousel-item active h-100 w-100">
-                                <img class="d-block img-fluid img-responsive h-100" src="{{ $facility->image_url }}" alt="First slide">
-                            </div>
-                            <div class="carousel-item h-100 w-100">
-                                <img class="d-block img-fluid" src="https://picsum.photos/600/359" alt="Second slide">
-                            </div>
-                            <div class="carousel-item h-100 w-100">
-                                <img class="d-block img-fluid" src="https://picsum.photos/600/358" alt="Third slide">
-                            </div>
+                        @foreach ($facility->images as $image)
+                            @if ($loop->first)
+                                <div class="carousel-item active h-100 w-100">
+                                    <img class="d-block img-fluid img-responsive h-100" src="{{ $facility->images[0]->image_url }}" alt="First slide">
+                                </div>
+                            @else
+                                <div class="carousel-item h-100 w-100">
+                                    <img class="d-block img-fluid img-responsive h-100" src="{{ $facility->images[$loop->index]->image_url }}" alt="Second slide">
+                                </div>
+                            @endif
+                        @endforeach
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -39,7 +41,7 @@
                             <a href="fasilitas/{{ $facility->id }}/calendar" class="col-4 text-uppercase fw-bold btn btn-warning rounded">Cek Kalender</a>
                         </div>
                         <div class="d-flex justify-content-center my-5">
-                            <a href="fasilitas/{{ $facility->id }}/lokasi" class="col-4 text-uppercase fw-bold btn btn-danger rounded">Cek Kalender</a>
+                            <a href="{{ $facility->map_url }}" class="col-4 text-uppercase fw-bold btn btn-danger rounded" target="_blank">Cek Lokasi</a>
                         </div>
                     </div>
                 </div>
