@@ -48,9 +48,8 @@ Route::middleware('auth')->group(function() {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/detail', function(){
-    return view('detail_fasilitas');
-});
 Route::get('/booking', function(){
     return view('booking');
 });
+
+Route::get("/fasilitas/{id}", [DashboardController::class, 'getFacilityDetail'])->name('facility.detail');

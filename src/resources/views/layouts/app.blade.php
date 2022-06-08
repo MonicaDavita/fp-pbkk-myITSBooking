@@ -20,10 +20,11 @@
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   @yield('styles')
-</head>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body class="bg-white">
   <div id="app">
