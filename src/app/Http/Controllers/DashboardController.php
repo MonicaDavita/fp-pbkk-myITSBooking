@@ -22,4 +22,11 @@ class DashboardController extends Controller
             "category" => $category
         ]);
     }
+
+    public function getFacilityDetail(Request $request, int $id)
+    {
+        $facility = Facility::findOrFail($id);
+
+        return view('facility-detail', compact('facility'));
+    }
 }

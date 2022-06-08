@@ -83,39 +83,43 @@
                 <div class="carousel-inner" role="listbox">
                   @foreach ($facilities as $facil)    
                     @if ($loop->iteration === 1)
-                      <div class="carousel-item active">
-                        <div class="col-md-4 px-4">
-                          <div class="card border-0">
-                            <div class="card-header px-0 bg-transparent text-start">
-                              <p class="fs-1 text-secondary">{{ $loop->iteration }}</p>
-                            </div>
-                            <div class="card-img">
-                              <img src="{{ $facil->image_url }}" class="img-fluid">
-                            </div>
-                            <div class="card-body px-0 bg-transparent text-start">
-                              <h3 class="fw-bold text-uppercase fs-3">{{ $facil->name }}</h3>
-                              <p class="fw-normal fs-5">{{ $facil->description }}</p>
+                      <a href="/fasilitas/{{ $facil->id }}">
+                        <div class="carousel-item active">
+                          <div class="col-md-4 px-4">
+                            <div class="card border-0">
+                              <div class="card-header px-0 bg-transparent text-start">
+                                <p class="fs-1 text-secondary">{{ $loop->iteration }}</p>
+                              </div>
+                              <div class="card-img">
+                                <img src="{{ $facil->image_url }}" class="img-fluid">
+                              </div>
+                              <div class="card-body px-0 bg-transparent text-start">
+                                <h3 class="fw-bold text-black text-uppercase fs-3">{{ $facil->name }}</h3>
+                                <p class="fw-normal fs-5 text-black">{{ $facil->description }}</p>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </a>
                     @else
-                      <div class="carousel-item">
-                        <div class="col-md-4 px-4">
-                          <div class="card border-0">
-                            <div class="card-header px-0 bg-transparent text-start">
-                              <p class="fs-1 text-secondary">{{ $loop->iteration }}</p>
-                            </div>
-                            <div class="card-img">
-                              <img src="{{ $facil->image_url }}" class="img-fluid">
-                            </div>
-                            <div class="card-body px-0 bg-transparent text-start">
-                              <h3 class="fw-bold text-uppercase fs-3">{{ $facil->name }}</h3>
-                              <p class="fw-normal fs-5">{{ $facil->description }}</p>
+                      <a href="/fasilitas/{{ $facil->id }}">
+                        <div class="carousel-item">
+                          <div class="col-md-4 px-4">
+                            <div class="card border-0">
+                              <div class="card-header px-0 bg-transparent text-start">
+                                <p class="fs-1 text-secondary">{{ $loop->iteration }}</p>
+                              </div>
+                              <div class="card-img">
+                                <img src="{{ $facil->image_url }}" class="img-fluid">
+                              </div>
+                              <div class="card-body px-0 bg-transparent text-start">
+                                <h3 class="fw-bold text-black text-uppercase fs-3">{{ $facil->name }}</h3>
+                                <p class="fw-normal fs-5 text-black">{{ $facil->description }}</p>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </a>
                     @endif
                   @endforeach
                 </div>
