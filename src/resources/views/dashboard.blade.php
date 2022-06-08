@@ -62,183 +62,76 @@
 
 @section('content')
   <section class="container">
-    <article class="d-flex flex-column justify-content-center" style="min-height: calc(100vh - 10rem);">
+    <article class="d-flex flex-column {{ count($facilities) == 0 ? "justify-content-start" : "justify-content-center" }}" style="min-height: calc(100vh - 10rem);">
       <div>
         <h1 class="fw-bold">Fasilitas-Fasilitas</h1>
-        <p class=" fs-5 text-primary fw-normal">yang terbaik untuk anda</p>
+        <p class=" fs-6 text-primary fw-normal">yang terbaik untuk anda</p>
+        @if (count($facilities) != 0)
+          <span class="badge bg-info fs-6">{{ $category ? "Kategori " . $category : "Semua fasilitas" }}</span>
+        @endif
       </div>
       <div>
         <div class="container text-center my-3">
-          <div class="row mx-auto my-auto justify-content-center">
-            <div id="recipeCarousel" class="carousel px-0 position-relative slide" data-bs-ride="carousel">
-              <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                  <div class="col-md-4 px-4">
-                    <div class="card border-0">
-                      <div class="card-header px-0 bg-transparent text-start">
-                        <p class="fs-1 text-secondary">01</p>
+          <div class="row mx-auto my-auto justify-content-start">
+            @if (count($facilities) == 0)
+              <div class="text-center">
+                <h1 class="fw-semibold fs-4">Maaf, kategori fasilitas yang anda cari tidak tersedia</h1>
+                <a href="/" class="btn btn-primary">Cari faslitas yang lain</a>
+              </div>
+            @else
+              <div id="recipeCarousel" class="carousel px-0 position-relative slide" data-bs-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                  @foreach ($facilities as $facil)    
+                    @if ($loop->iteration === 1)
+                      <div class="carousel-item active">
+                        <div class="col-md-4 px-4">
+                          <div class="card border-0">
+                            <div class="card-header px-0 bg-transparent text-start">
+                              <p class="fs-1 text-secondary">{{ $loop->iteration }}</p>
+                            </div>
+                            <div class="card-img">
+                              <img src="{{ $facil->image_url }}" class="img-fluid">
+                            </div>
+                            <div class="card-body px-0 bg-transparent text-start">
+                              <h3 class="fw-bold text-uppercase fs-3">{{ $facil->name }}</h3>
+                              <p class="fw-normal fs-5">{{ $facil->description }}</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="card-img">
-                        <img src="//via.placeholder.com/500x400/31f?text=1" class="img-fluid">
+                    @else
+                      <div class="carousel-item">
+                        <div class="col-md-4 px-4">
+                          <div class="card border-0">
+                            <div class="card-header px-0 bg-transparent text-start">
+                              <p class="fs-1 text-secondary">{{ $loop->iteration }}</p>
+                            </div>
+                            <div class="card-img">
+                              <img src="{{ $facil->image_url }}" class="img-fluid">
+                            </div>
+                            <div class="card-body px-0 bg-transparent text-start">
+                              <h3 class="fw-bold text-uppercase fs-3">{{ $facil->name }}</h3>
+                              <p class="fw-normal fs-5">{{ $facil->description }}</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="card-body px-0 bg-transparent text-start">
-                        <h3 class="fw-bold text-uppercase fs-3">Graha ITS</h3>
-                        <p class="fw-normal fs-5">Gedung yang memfasilitasi acara besar seperti wisuda, pernikahan, reuni,
-                          dan sebagainya.</p>
-                      </div>
-                    </div>
-                  </div>
+                    @endif
+                  @endforeach
                 </div>
-                <div class="carousel-item">
-                  <div class="col-md-4 px-4">
-                    <div class="card border-0">
-                      <div class="card-header px-0 bg-transparent text-start">
-                        <p class="fs-1 text-secondary">02</p>
-                      </div>
-                      <div class="card-img">
-                        <img src="//via.placeholder.com/500x400/31f?text=1" class="img-fluid">
-                      </div>
-                      <div class="card-body px-0 bg-transparent text-start">
-                        <h3 class="fw-bold text-uppercase fs-3">Graha ITS</h3>
-                        <p class="fw-normal fs-5">Gedung yang memfasilitasi acara besar seperti wisuda, pernikahan, reuni,
-                          dan sebagainya.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="col-md-4 px-4">
-                    <div class="card border-0">
-                      <div class="card-header px-0 bg-transparent text-start">
-                        <p class="fs-1 text-secondary">03</p>
-                      </div>
-                      <div class="card-img">
-                        <img src="//via.placeholder.com/500x400/31f?text=1" class="img-fluid">
-                      </div>
-                      <div class="card-body px-0 bg-transparent text-start">
-                        <h3 class="fw-bold text-uppercase fs-3">Graha ITS</h3>
-                        <p class="fw-normal fs-5">Gedung yang memfasilitasi acara besar seperti wisuda, pernikahan, reuni,
-                          dan sebagainya.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="col-md-4 px-4">
-                    <div class="card border-0">
-                      <div class="card-header px-0 bg-transparent text-start">
-                        <p class="fs-1 text-secondary">04</p>
-                      </div>
-                      <div class="card-img">
-                        <img src="//via.placeholder.com/500x400/31f?text=1" class="img-fluid">
-                      </div>
-                      <div class="card-body px-0 bg-transparent text-start">
-                        <h3 class="fw-bold text-uppercase fs-3">Graha ITS</h3>
-                        <p class="fw-normal fs-5">Gedung yang memfasilitasi acara besar seperti wisuda, pernikahan, reuni,
-                          dan sebagainya.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="col-md-4 px-4">
-                    <div class="card border-0">
-                      <div class="card-header px-0 bg-transparent text-start">
-                        <p class="fs-1 text-secondary">05</p>
-                      </div>
-                      <div class="card-img">
-                        <img src="//via.placeholder.com/500x400/31f?text=1" class="img-fluid">
-                      </div>
-                      <div class="card-body px-0 bg-transparent text-start">
-                        <h3 class="fw-bold text-uppercase fs-3">Graha ITS</h3>
-                        <p class="fw-normal fs-5">Gedung yang memfasilitasi acara besar seperti wisuda, pernikahan, reuni,
-                          dan sebagainya.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="col-md-4 px-4">
-                    <div class="card border-0">
-                      <div class="card-header px-0 bg-transparent text-start">
-                        <p class="fs-1 text-secondary">06</p>
-                      </div>
-                      <div class="card-img">
-                        <img src="//via.placeholder.com/500x400/31f?text=1" class="img-fluid">
-                      </div>
-                      <div class="card-body px-0 bg-transparent text-start">
-                        <h3 class="fw-bold text-uppercase fs-3">Graha ITS</h3>
-                        <p class="fw-normal fs-5">Gedung yang memfasilitasi acara besar seperti wisuda, pernikahan, reuni,
-                          dan sebagainya.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="col-md-4 px-4">
-                    <div class="card border-0">
-                      <div class="card-header px-0 bg-transparent text-start">
-                        <p class="fs-1 text-secondary">07</p>
-                      </div>
-                      <div class="card-img">
-                        <img src="//via.placeholder.com/500x400/31f?text=1" class="img-fluid">
-                      </div>
-                      <div class="card-body px-0 bg-transparent text-start">
-                        <h3 class="fw-bold text-uppercase fs-3">Graha ITS</h3>
-                        <p class="fw-normal fs-5">Gedung yang memfasilitasi acara besar seperti wisuda, pernikahan, reuni,
-                          dan sebagainya.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="col-md-4 px-4">
-                    <div class="card border-0">
-                      <div class="card-header px-0 bg-transparent text-start">
-                        <p class="fs-1 text-secondary">08</p>
-                      </div>
-                      <div class="card-img">
-                        <img src="//via.placeholder.com/500x400/31f?text=1" class="img-fluid">
-                      </div>
-                      <div class="card-body px-0 bg-transparent text-start">
-                        <h3 class="fw-bold text-uppercase fs-3">Graha ITS</h3>
-                        <p class="fw-normal fs-5">Gedung yang memfasilitasi acara besar seperti wisuda, pernikahan, reuni,
-                          dan sebagainya.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="col-md-4 px-4">
-                    <div class="card border-0">
-                      <div class="card-header px-0 bg-transparent text-start">
-                        <p class="fs-1 text-secondary">09</p>
-                      </div>
-                      <div class="card-img">
-                        <img src="//via.placeholder.com/500x400/31f?text=1" class="img-fluid">
-                      </div>
-                      <div class="card-body px-0 bg-transparent text-start">
-                        <h3 class="fw-bold text-uppercase fs-3">Graha ITS</h3>
-                        <p class="fw-normal fs-5">Gedung yang memfasilitasi acara besar seperti wisuda, pernikahan,
-                          reuni,
-                          dan sebagainya.</p>
-                      </div>
-                    </div>
-                  </div>
+                <div class="m-0 d-flex justify-content-between position-absolute top-50 w-100 left-0 right-0"
+                  style="transfrom: translate(50%);">
+                  <button class="bg-transparent border-0" href="#recipeCarousel" role="button" type="button"
+                    data-bs-slide="prev" style="transform: translateX(-75%);">
+                    <img src="{{ asset('vendor/blade-fontawesome/solid/angle-left.svg') }}" width="75" height="75" />
+                  </button>
+                  <button class="bg-transparent border-0" href="#recipeCarousel" role="button" type="button"
+                    data-bs-slide="next" style="transform: translateX(75%);">
+                    <img src="{{ asset('vendor/blade-fontawesome/solid/angle-right.svg') }}" width="75" height="75" />
+                  </button>
                 </div>
               </div>
-              <div class="m-0 d-flex justify-content-between position-absolute top-50 w-100 left-0 right-0"
-                style="transfrom: translate(50%);">
-                <button class="bg-transparent border-0" href="#recipeCarousel" role="button" type="button"
-                  data-bs-slide="prev" style="transform: translateX(-75%);">
-                  <img src="{{ asset('vendor/blade-fontawesome/solid/angle-left.svg') }}" width="75" height="75" />
-                </button>
-                <button class="bg-transparent border-0" href="#recipeCarousel" role="button" type="button"
-                  data-bs-slide="next" style="transform: translateX(75%);">
-                  <img src="{{ asset('vendor/blade-fontawesome/solid/angle-right.svg') }}" width="75" height="75" />
-                </button>
-              </div>
-            </div>
+            @endif
           </div>
         </div>
       </div>
