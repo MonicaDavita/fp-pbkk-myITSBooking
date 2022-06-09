@@ -17,13 +17,13 @@
       <!-- Right Side Of Navbar -->
       <ul class="navbar-nav ms-auto">
         <li class="px-4 border-2 fs-5 nav-item border-end">
-          <a class="nav-link" href="/department">Departemen</a>
+          <a class="nav-link" href="/category/department">Departemen</a>
         </li>
         <li class="px-4 border-2 fs-5 nav-item border-end">
-          <a class="nav-link" href="/sport">Olahraga</a>
+          <a class="nav-link" href="/category/sport">Olahraga</a>
         </li>
         <li class="px-4 border-2 fs-5 nav-item border-end">
-          <a class="nav-link" href="/rapat">Rapat</a>
+          <a class="nav-link" href="/category/rapat">Rapat</a>
         </li>
 
         <!-- Authentication Links -->
@@ -43,12 +43,12 @@
         @else
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="px-4 fs-5 nav-link dropdown-toggle" href="#" role="button"
-              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+              data-bs-toggle="dropdown" aria-expanded="false">
               {{ auth()->guard('user')->check() ? auth()->guard('user')->user()->name : auth()->guard('admin')->user()->name }}
             </a>
 
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#" onclick="event.preventDefault()">
+              <a class="dropdown-item" href="/profil">
                 {{ __('Profil') }}
               </a>
               <a class="dropdown-item" href="{{ route('logout') }}"

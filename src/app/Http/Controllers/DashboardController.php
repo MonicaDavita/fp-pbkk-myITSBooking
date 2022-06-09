@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Facility;
 use App\Models\Transaction;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
@@ -85,5 +86,31 @@ class DashboardController extends Controller
         ]);
 
         return redirect('/')->with('booking-success', 'Booking berhasil dilakukan!');
+    }
+
+    public function profile()
+    {
+        return view('profile');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email:rfc,dns',
+            'phone_number' => 'required',
+            // 'phone_number' => 'required|regex:^(^\\+62|62|^08)(\\d{3,4}-?){2}\\d{3,4}$',
+            'institusi' => 'required|max:255'
+        ]);
+
+        User::where('id', auth()->user()->id)
+            ->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone_number' => $request->phone_number,
+                'institusi' => $request->institusi
+            ]);
+
+        return redirect()->back()->with('update-success', 'Pembaruan data berhasil dilakukan');
     }
 }

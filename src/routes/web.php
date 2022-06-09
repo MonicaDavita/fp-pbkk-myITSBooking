@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\Auth\AdminLoginController;
@@ -43,14 +44,18 @@ Route::prefix('admin')->name('admin.')->group(function() {
 Route::middleware('auth')->group(function() {
     Route::get('/fasilitas/{id}/booking', [DashboardController::class, 'booking'])->name('booking');
     Route::post('/fasilitas/{id}/booking', [DashboardController::class, 'makeBooking'])->name('makebooking');
-
-    Route::get('/{category?}', [DashboardController::class, 'index']);
+    
+    
+    Route::get('/category/{category?}', [DashboardController::class, 'index']);
+    
+    Route::get('/profil', [DashboardController::class, 'profile'])->name('profile');
+    Route::post('/profil', [DashboardController::class, 'updateProfile'])->name('update.profile');
 
     Route::get('calendar', [CalendarController::class, 'index']);
     Route::post('fullcalenderAjax', [CalendarController::class, 'ajax']);
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/booking', function(){
     return view('booking');
 });
