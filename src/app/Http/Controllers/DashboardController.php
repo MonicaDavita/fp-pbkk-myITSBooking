@@ -113,4 +113,11 @@ class DashboardController extends Controller
 
         return redirect()->back()->with('update-success', 'Pembaruan data berhasil dilakukan');
     }
+
+    public function history()
+    {
+        $transactions = Transaction::where('user_id', auth()->user()->id)->get();
+
+        return view('history', compact('transactions'));
+    }
 }

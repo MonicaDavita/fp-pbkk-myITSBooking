@@ -51,6 +51,9 @@
               <a class="dropdown-item" href="/profil">
                 {{ __('Profil') }}
               </a>
+              <a class="dropdown-item" href="/riwayat">
+                Riwayat
+              </a>
               <a class="dropdown-item" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">

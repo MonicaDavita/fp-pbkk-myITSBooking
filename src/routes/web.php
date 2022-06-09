@@ -46,8 +46,11 @@ Route::middleware('auth')->group(function() {
     Route::post('/fasilitas/{id}/booking', [DashboardController::class, 'makeBooking'])->name('makebooking');
     
     
-    Route::get('/category/{category?}', [DashboardController::class, 'index']);
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/category/{category?}', [DashboardController::class, 'index'])->name('dashboard.category');
     
+    Route::get('/riwayat', [DashboardController::class, 'history'])->name('history');
+
     Route::get('/profil', [DashboardController::class, 'profile'])->name('profile');
     Route::post('/profil', [DashboardController::class, 'updateProfile'])->name('update.profile');
 
